@@ -1,6 +1,7 @@
 pipeline {
     agent any
     stages {
+
         stage('Many tests') {
             parallel {
                 stage('Shard #1') {
@@ -10,6 +11,7 @@ pipeline {
                         }
                     }
                     steps {
+                        sh "npm install"
                         sh 'npx playwright test --shard=1/2'
                     }
                 }
@@ -20,6 +22,7 @@ pipeline {
                         }
                     }
                     steps {
+                        sh "npm install"
                         sh 'npx playwright test --shard=2/2'
                     }
                 }
