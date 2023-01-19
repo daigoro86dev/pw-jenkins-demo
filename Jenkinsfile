@@ -6,12 +6,23 @@ pipeline {
                 stage('Shard #1') {
                     agent {
                         docker {
-                            image 'mcr.microsoft.com/playwright:v1.29.0-focal'
+                            image 'mcr.microsoft.com/playwright:v1.29.2-focal'
                         }
                     }
                     steps {
                         sh "npm install"
                         sh 'npx playwright test --shard=1/2'
+                    }
+                }
+                stage('Shard #2') {
+                    agent {
+                        docker {
+                            image 'mcr.microsoft.com/playwright:v1.29.2-focal'
+                        }
+                    }
+                    steps {
+                        sh "npm install"
+                        sh 'npx playwright test --shard=2/2'
                     }
                 }
             }
