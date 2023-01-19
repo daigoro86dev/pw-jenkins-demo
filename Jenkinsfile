@@ -6,7 +6,7 @@ pipeline {
                 stage('Shard #1') {
                     agent {
                         docker {
-                            image 'mcr.microsoft.com/playwright:v1.17.1'
+                            image 'mcr.microsoft.com/playwright:v1.29.0-focal'
                         }
                     }
                     steps {
@@ -16,7 +16,7 @@ pipeline {
                 stage('Shard #2') {
                     agent {
                         docker {
-                            image 'mcr.microsoft.com/playwright:v1.17.1'
+                            image 'mcr.microsoft.com/playwright:v1.29.0-focal'
                         }
                     }
                     steps {
